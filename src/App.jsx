@@ -8,6 +8,7 @@ import SavedJobs from "./pages/SavedJobs"
 import Signup from "./pages/Signup"
 import Layout from "./components/layout/Layout" 
 import NotFound from "./pages/NotFound"
+import Test from './pages/Test'
 function App() {
   return (
    
@@ -21,6 +22,7 @@ function App() {
        
         <Route path="/signup" element={<Signup />} />
       <Route path="/savedjobs" element={<SavedJobs />} />
+       <Route path="test" element={<Test />} />
       <Route path="*" element={<NotFound />} />  {/* 404 catch-all */}
       </Routes>
       

@@ -29,3 +29,8 @@ dist-ssr
 # Private files - only visible locally (not pushed to git)
 PROJECT_CONTEXT.md
 PROGRESS.md
+
+# local env files
+.env
+.env.local
+.env.*.local
