@@ -1,13 +1,15 @@
 import { useState } from 'react'
 import { useAuth } from "../context/useAuth"
+import { useNavigate } from 'react-router-dom'
 
-function Signup() {
+function Login() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
 
-  const { signup } = useAuth()
+  const { login } = useAuth()
+  const navigate = useNavigate()
 
   function handleEmailChange(e) {
     setEmail(e.target.value)
@@ -22,12 +24,12 @@ function Signup() {
     setError('')
     setLoading(true)
 
-    const { error } = await signup(email, password)
+    const { error } = await login(email, password)
 
     if (error) {
       setError(error.message)
     } else {
-      alert('Signup successful! Check your email to verify.')
+      navigate('/')  // Redirect to home on success
     }
 
     setLoading(false)
@@ -36,7 +38,7 @@ function Signup() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50">
       <div className="max-w-md w-full p-8 bg-white rounded-2xl shadow-lg">
-        <h2 className="text-3xl font-bold text-center text-gray-900 mb-8">Sign Up</h2>
+        <h2 className="text-3xl font-bold text-center text-gray-900 mb-8">Login</h2>
 
         {error && (
           <div className="bg-red-100 text-red-600 p-3 rounded-lg mb-4">
@@ -63,7 +65,7 @@ function Signup() {
               type="password"
               value={password}
               onChange={handlePasswordChange}
-              placeholder="Min 6 characters"
+              placeholder="Your password"
               required
               className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             />
@@ -74,16 +76,16 @@ function Signup() {
             disabled={loading}
             className="w-full py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50"
           >
-            {loading ? 'Signing up...' : 'Sign Up'}
+            {loading ? 'Logging in...' : 'Login'}
           </button>
         </form>
 
         <p className="text-center text-gray-600 mt-6">
-          Already have an account? <a href="/login" className="text-blue-600 hover:underline">Login</a>
+          Don't have an account? <a href="/signup" className="text-blue-600 hover:underline">Sign Up</a>
         </p>
       </div>
     </div>
   )
 }
 
-export default Signup
+export default Login

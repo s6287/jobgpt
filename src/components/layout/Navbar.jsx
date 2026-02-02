@@ -1,7 +1,13 @@
-import React from 'react'
 import { Link } from 'react-router-dom'
+import { useAuth } from '../../context/useAuth'
 
 function Navbar() {
+  const { user, logout } = useAuth()
+
+  const handleLogout = async () => {
+    await logout()
+  }
+
   return (
     <nav className="sticky top-0 bg-white border-b border-gray-100 z-50">
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
@@ -17,7 +23,21 @@ function Navbar() {
           <Link to="/#features" className="text-gray-600 hover:text-gray-900 font-medium">Features</Link>
           <Link to="/pricing" className="text-gray-600 hover:text-gray-900 font-medium">Pricing</Link>
           <Link to="/savedjobs" className="text-gray-600 hover:text-gray-900 font-medium">Saved Jobs</Link>
-          <Link to="/login" className="text-gray-600 hover:text-gray-900 font-medium">Login</Link>
+
+          {/* Show Login or User info based on auth state */}
+          {user ? (
+            <div className="flex items-center gap-4">
+              <span className="text-gray-600 text-sm">{user.email}</span>
+              <button
+                onClick={handleLogout}
+                className="text-gray-600 hover:text-gray-900 font-medium"
+              >
+                Logout
+              </button>
+            </div>
+          ) : (
+            <Link to="/login" className="text-gray-600 hover:text-gray-900 font-medium">Login</Link>
+          )}
         </div>
 
         {/* CTA Button */}
