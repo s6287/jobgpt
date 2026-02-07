@@ -7,6 +7,7 @@ import Profile from "./pages/Profile"
 import SavedJobs from "./pages/SavedJobs"
 import Signup from "./pages/Signup"
 import Login from "./pages/Login"
+import Upload from "./pages/Upload"
 import Layout from "./components/layout/Layout" 
 import NotFound from "./pages/NotFound"
 import Test from './pages/Test'
@@ -23,6 +24,7 @@ function App() {
        
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/upload" element={<Upload />} />
       <Route path="/savedjobs" element={<SavedJobs />} />
        <Route path="test" element={<Test />} />
       <Route path="*" element={<NotFound />} />  {/* 404 catch-all */}

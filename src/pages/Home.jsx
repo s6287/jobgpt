@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function Home() {
   return (
@@ -364,9 +365,9 @@ function Home() {
                   <span className="text-gray-700">Basic search filters</span>
                 </li>
               </ul>
-              <button className="w-full py-4 border-2 border-gray-200 rounded-xl font-semibold text-gray-900 hover:bg-gray-50 transition-colors">
+              <Link to="/signup" className="block w-full py-4 border-2 border-gray-200 rounded-xl font-semibold text-gray-900 hover:bg-gray-50 transition-colors text-center">
                 Get Started Free
-              </button>
+              </Link>
             </div>
 
             {/* Premium */}
@@ -416,9 +417,9 @@ function Home() {
                   <span className="text-gray-300">Priority support</span>
                 </li>
               </ul>
-              <button className="w-full py-4 bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded-xl font-semibold hover:from-orange-600 hover:to-orange-700 transition-colors shadow-lg shadow-orange-500/25">
+              <Link to="/pricing" className="block w-full py-4 bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded-xl font-semibold hover:from-orange-600 hover:to-orange-700 transition-colors shadow-lg shadow-orange-500/25 text-center">
                 Get Premium
-              </button>
+              </Link>
             </div>
           </div>
         </div>
